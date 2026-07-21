@@ -10,15 +10,12 @@ public class Main {
 
         List<Integer> arr2 = Arrays.asList(3, 4, 5);
 
-        System.out.println("Hddsssdi");
+        System.out.println("Hi");
 
         arr2.stream().map(i -> i + 1).forEach(System.out::print);
+        System.out.println();
 
-        int a[] = { 1, 2, 3, 42, 2 };
-        for (int i : a) {
-            System.out.println(i);
-        }
+        arr2.stream().map(i -> i + 10).forEach(System.out::println);
 
-        Arrays.stream(a).map()
     }
 }
