@@ -1,0 +1,33 @@
+package Streams;
+
+import java.util.ArrayList;
+import java.util.List;
+/*
+1) Distinct
+
+ */
+public class Example2 {
+    static void main() {
+
+
+        List<Integer> arrr = new ArrayList<>(List.of(3,4,1,4,5));
+
+        arrr.stream().distinct().peek(var->{
+            System.out.print(var+" ");
+        }).forEach(var->{
+            System.out.println(var+" it prints one by one not peak complete and forEach performs ");
+        });
+
+        /*
+        "C:\Program Files\Java\jdk-25.0.2\bin\java.exe" "-javaagent:C:\Program Files\JetBrains\IntelliJ IDEA 2026.1\lib\idea_rt.jar=64188" -Dfile.encoding=UTF-8 -Dsun.stdout.encoding=UTF-8 -Dsun.stderr.encoding=UTF-8 -classpath D:\Java\Streams\Java-Streams\JavaStreams\out\production\JavaStreams Streams.Example2
+3 3 it prints one by one not peak complete and forEach performs
+4 4 it prints one by one not peak complete and forEach performs
+1 1 it prints one by one not peak complete and forEach performs
+5 5 it prints one by one not peak complete and forEach performs
+
+Process finished with exit code 0
+
+         */
+
+    }
+}
