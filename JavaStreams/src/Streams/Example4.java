@@ -2,12 +2,15 @@ package Streams;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /*
 
 1) Map
 2) FlatMap
-3) Reduce
+3) Reduce  sum min reduce to one element (initialValue,(a,b)->where a is accumulated value b is current value
+4) Skip
+5)Limit opposite to skip   limit means from start limit 5 only 5 elements
  */
 
 public class Example4 {
@@ -53,6 +56,12 @@ public class Example4 {
                 Arrays.asList("e","f")
         );
 
+        lists.stream().flatMap(list-> list.stream())  //flatten the list to single
+                .map(var->var.toUpperCase())
+                .forEach(var-> System.out.print(var+" "));
+
+        System.out.println();
+        //to print the 2d array
         for(List<String> i:lists)
         {
             for(String j:i)
@@ -73,11 +82,59 @@ public class Example4 {
             }
         }
 
+        List<List<Integer>> numbers = Arrays.asList(
+                Arrays.asList(1,2,3),
+                Arrays.asList(3,4,2,1),
+                Arrays.asList(6,3,2,5)
+        );
+
+        numbers.stream()
+                .flatMap(array->array.stream())
+                .filter(var->var%2==0)
+                .map(var->var+400)
+                .forEach(var-> System.out.print(var+" "));
+
+
+        //skip n elements from the data
+
+        List<Integer> oddNumbers = List.of(1,3,1,5,55,11);
+
+        List<Integer> evenNumbers = Arrays.asList(2,4,6,8,9,10,12);
+
+        // cannot add
 
 
 
+//        evenNumbers.add(32);
+//        oddNumbers.add(3); throws Exception
+
+//        oddNumbers.set(0,4); throws exception
+
+        evenNumbers.set(0,44); //works fine but fixed size not thread safe
+
+        System.out.println();
+
+        for (Integer oddNumber : oddNumbers) {
+            System.out.print(oddNumber+" ");
+
+        }
+
+        //skip the n elements
+        System.out.println();
+        oddNumbers.stream()
+                .skip(3)
+                .forEach(var-> System.out.print(var+" "));
 
 
 
+        //Limit
+        System.out.println();
+
+       List<Integer> result = evenNumbers.stream()
+                .skip(1)
+                .limit(3)
+                .toList();
+        System.out.println("Limit");
+       result.forEach(var-> System.out.print(var+" "));
     }
 }
