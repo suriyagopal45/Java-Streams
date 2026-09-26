@@ -3,6 +3,7 @@ package Streams;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /*
 
@@ -94,7 +95,22 @@ public class Example4 {
                 .map(var->var+400)
                 .forEach(var-> System.out.print(var+" "));
 
+        //reduce
+        Integer maxValue = Stream.of(2,3,4,5,2,55,43,2,45)
+                .reduce(0,(a,b)->
+                {
+                    return Math.max(a,b);
+                });
 
+        Integer sum = Stream.of(2,3,4,5,2,55,43,2,45)
+                .reduce(0,(a,b)->
+                {
+                    return a+b;
+                });
+
+
+
+        System.out.println(maxValue);
         //skip n elements from the data
 
         List<Integer> oddNumbers = List.of(1,3,1,5,55,11);
